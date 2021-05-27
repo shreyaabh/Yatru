@@ -1,0 +1,26 @@
+{% extends 'posts/base.html' %}
+{% block body %}
+
+ {% for obj in qs %}
+    {{obj.location}}
+    {{obj.author}}
+<form action ="{%url 'posts:like_unlike' %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name='location_post_id' value={{obj.id}}>
+    <button type='submit'>Like </button>
+</form>
+{%endfor%}
+<hr/>
+<form action="{%url 'posts:post_add' %}" class="ui form" enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{form.as_p}}
+    </div>
+  </div>
+  
+    <button type='submit'>
+      Add New Post
+      
+    </button>
+    </form>
+  
+ {%endblock%}

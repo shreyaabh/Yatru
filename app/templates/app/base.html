@@ -1,0 +1,23 @@
+{% if user.is_authenticated %}
+Logged in as {{user.username}}
+<form action="{% url 'app:logoutuser'%}" method='POST'>
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Log Out</button>
+
+</form>
+
+{%else%}
+
+
+<a href="{% url 'app:loginuser'%}">Log In </a>
+<a href="{% url 'app:signupuser' %}">Sign Up </a>
+
+{%endif%}
+<a class="navbar-brand" href="{% url 'app:home' %}">Home</a>
+<a class="navbar-brand" href="{% url 'app:my-profile-view' %}">Profile</a>
+<a class="navbar-brand" href="{% url 'posts:post_views' %}">Posts</a>
+<a class="navbar-brand" href="{% url 'app:view_messages' %}">Messages</a>
+{%block content%}
+
+{%endblock%}
+

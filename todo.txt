@@ -1,0 +1,5 @@
+Make form for posts ( delete)
+request user to add eachother
+search ma else
+make author same as user
+//Messages

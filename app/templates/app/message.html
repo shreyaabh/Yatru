@@ -1,0 +1,36 @@
+{% extends 'app/base.html'%}{% comment %} 
+{%block content%} 
+<h1>Messages</h1>
+    <h2 style="background-color:powderblue;">From:{{messages}}</h2>
+
+{% for obj in messages %}
+    <p style="background-color:#DCDCDC;">{{obj.content}}</p>
+{%endfor%}
+{%endblock%} {% endcomment %}
+
+
+{%block content%}
+<form action="{%url 'app:new_messages' %}" class="ui form" enctype='multipart/form-data'>
+    <button type='submit'>
+      New Message  
+    </button>
+    </form>
+{%if msgs%}
+  {% for msg in msgs %}
+      <div class="message">
+          <div class="message__detail">
+              
+            <p style="background-color:powderblue;class="message__authort">From:{{msg.author}}</p>
+              <p class="message__date">{{msg.date_posted|date:"D/m/y - H:i"}}</p>
+          </div>
+          <div class="message__content">
+              <p class="message__msg">{{msg.content}}</p>
+          </div>
+      </div>
+  {% endfor %}
+{%else%}
+    <h4 style="text-align:center">You have no Messages :</h4>
+{%endif%}
+{%endblock%}
+
+

@@ -1,0 +1,29 @@
+{% extends 'app/base.html'%}
+{% comment %} <form action="" action="POST">
+{% csrf_token %}
+{{form}}
+<button type="submit">Update Profile</button>
+</form>
+{%if confirm%}
+    Updated {{request.user}}
+{%endif%} {% endcomment %}
+
+{%block content%}
+    <h1> Your Profile </h1>
+     <img height= "100px" width ="120px" src="{{profile.avatar.url}}"><br/>
+      {{profile.first_name}}<br/>
+      {{profile.last_name}}<br/>
+      {{profile.bio}}<br/> <hr>
+     <form action="" method="POST" class="ui form" enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{form.as_p}}
+    </div>
+  </div>
+  
+    <button type='submit'>
+      Update
+      
+    </button>
+    </form>
+{%endblock%}
+ 
